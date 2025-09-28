@@ -6,13 +6,13 @@ export const siteConfig = {
     name: "哈基米",
     bio: "前端开发者 & 设计师",
     statement: "我热衷于打造美观、实用且令人愉悦的数字体验。",
-    email: "zhangwei.dev@example.com",
+    email: "example@example.com",
     avatarUrl: "logo.svg",
   },
   socials: {
-    github: "https://github.com/example",
-    linkedin: "https://linkedin.com/in/example",
-    x: "https://x.com/example",
+    github: "https://github.com/sky22333/myhome",
+    linkedin: "https://linkedin.com",
+    x: "https://x.com",
   },
   about: {
     title: "关于我",
@@ -24,17 +24,17 @@ export const siteConfig = {
       {
         title: "项目一：响应式电商平台",
         description: "一个功能齐全的电子商务网站，适用移动优先的方法构建，具有无缝的结账流程和产品管理系统。",
-        link: "https://github.com/example/project-one",
+        link: "https://github.com",
       },
       {
         title: "项目二：数据可视化仪表盘",
         description: "一个交互式仪表盘，用于实时可视化复杂数据集，帮助用识识别趋势和模式。",
-        link: "https://github.com/example/project-two",
+        link: "https://github.com",
       },
       {
         title: "项目三：个人博客引导",
         description: "一个使用静态站点生成器构建的轻量级、快速的博客平台，专注于内容和排版。",
-        link: "https://github.com/example/project-three",
+        link: "https://github.com",
       },
     ],
   },
