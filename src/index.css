@@ -45,6 +45,13 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+
+  /* Force reset scrollbar style to default */
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    all: revert;
+  }
 }
 @layer base {
   * {

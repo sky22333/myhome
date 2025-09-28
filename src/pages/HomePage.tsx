@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { siteConfig } from '@/lib/config';
 import { Icons } from '@/components/icons';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Mail, Link as LinkIcon, ArrowUpRight } from 'lucide-react';
+import { Mail, Link as LinkIcon, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+
 const MotionSection = motion.section;
+
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -17,6 +19,7 @@ const sectionVariants: Variants = {
     },
   },
 };
+
 const SocialLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <motion.a
     href={href}
@@ -29,11 +32,27 @@ const SocialLink = ({ href, children }: { href: string; children: React.ReactNod
     {children}
   </motion.a>
 );
+
 export function HomePage() {
   const authorInitials = siteConfig.author.name
     .split(' ')
     .map((n) => n[0])
     .join('');
+
+  const [showScroll, setShowScroll] = useState(true);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScroll(false);
+        window.removeEventListener('scroll', checkScroll);
+      }
+    };
+
+    window.addEventListener('scroll', checkScroll);
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
   return (
     <div className="bg-background font-sans text-foreground antialiased">
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(hsl(var(--muted))_1px,transparent_1px)]"></div>
@@ -43,7 +62,7 @@ export function HomePage() {
       <main className="container mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
         {/* Hero Section */}
         <MotionSection
-          className="flex min-h-screen flex-col justify-center space-y-6 py-16 md:py-24"
+          className="relative flex min-h-screen flex-col justify-center space-y-6 py-16 md:py-24"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -74,6 +93,13 @@ export function HomePage() {
               <Icons.X className="h-6 w-6" />
             </SocialLink>
           </div>
+          {showScroll && (
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+              <div className="animate-float flex flex-col items-center text-muted-foreground">
+                <ChevronDown className="h-10 w-10" />
+              </div>
+            </div>
+          )}
         </MotionSection>
         {/* About Section */}
         <MotionSection
