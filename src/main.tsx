@@ -10,6 +10,8 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
 import '@/index.css'
 import { HomePage } from '@/pages/HomePage'
+import { Toaster } from '@/components/ui/sonner'
+import { ThemeProvider } from 'next-themes'
 
 const router = createBrowserRouter([
   {
@@ -17,14 +19,19 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <RouteErrorBoundary />,
   },
-]);
+], {
+  basename: "/myhome"
+});
 
 // Do not touch this code
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ErrorBoundary>
-      <RouterProvider router={router} basename="/myhome/" />
-    </ErrorBoundary>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ErrorBoundary>
+        <RouterProvider router={router} />
+        <Toaster />
+      </ErrorBoundary>
+    </ThemeProvider>
   </StrictMode>,
 )
-   
+

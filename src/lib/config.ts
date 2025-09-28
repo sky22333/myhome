@@ -7,7 +7,7 @@ export const siteConfig = {
     bio: "前端开发者 & 设计师",
     statement: "我热衷于打造美观、实用且令人愉悦的数字体验。",
     email: "zhangwei.dev@example.com",
-    avatarUrl: "/logo.svg",
+    avatarUrl: "logo.svg",
   },
   socials: {
     github: "https://github.com/example",
